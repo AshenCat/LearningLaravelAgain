@@ -1,0 +1,58 @@
+-----starting laravel-----
+install node            node -v     npm -v
+install composer        composer
+install laravel         
+
+-----commands------
+php artisan -> Basic commands
+php artisan serve -> launch project
+php artisan make:auth -> enables login and register
+php artisan migrate -> creates database tables
+
+/----------------------------------------------------
+front end has to be compiled before you can use
+
+----------------------------------------------------/
+
+-----javascript-----
+npm install -> compile dependencies found at composer.json
+
+npm run dev -> take everything laravel ships with and it will compile down to a useable file
+            \->creats app.css and app.js, all the front-end assets
+/**** Don't touch public/js folder. The created files are found at resources/js folder.*****/
+
+
+
+
+
+
+
+
+/----------------------------------------------------
+Concepts
+----------------------------------------------------/
+migration - file that holds all the instructions that you need to tell your database to create itself
+
+
+/----------------------------------------------------
+file/folder specifics
+----------------------------------------------------/
+.env -  holds all the different configurations that are specific to the environment
+
+/----------------------------------------------------
+Backlog
+----------------------------------------------------/
+
+---*base*---
+php artisan serve
+php artisan make:auth
+npm install
+npm run dev
+---*database*---
+/****
+modify the database only through migration not directly through the database
+so each change is done in a systematic way
+****/
+*change .env database to sqlite & delete other db stuff
+php artisan migrate
+php artisan serve
