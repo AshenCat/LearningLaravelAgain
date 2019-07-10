@@ -8,6 +8,9 @@ php artisan -> Basic commands
 php artisan serve -> launch project
 php artisan make:auth -> enables login and register
 php artisan migrate -> creates database tables
+php artisan tinker -> interact with the app e.g. check variables
+php artisan make:controller <name> -> creates a controller
+php artisan make:model <name> -m ->creates a model with migration(-m flag)
 
 /----------------------------------------------------
 front end has to be compiled before you can use
@@ -32,6 +35,8 @@ npm run dev -> take everything laravel ships with and it will compile down to a 
 Concepts
 ----------------------------------------------------/
 migration - file that holds all the instructions that you need to tell your database to create itself
+controller - where logics are stored
+model - represents a row in the database
 
 
 /----------------------------------------------------
@@ -56,3 +61,37 @@ so each change is done in a systematic way
 *change .env database to sqlite & delete other db stuff
 php artisan migrate
 php artisan serve
+/****
+modify migrations and controller to add username for each username
+****/
+php artisan tinker
+User::all()
+exit
+php artisan migrate:fresh
+/** loses all previous data**/
+php artisan make:controller ProfilesController
+php artisan make:model profile -m
+
+
+
+
+
+
+
+public function up()
+    {
+        Schema::create('profiles', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('url')->nullable();
+            $table->timestamps();
+
+            $table->index('user_id');
+        });
+    }
+
+public function user(){
+        return $this->belongsTo(User::class);
+    }
