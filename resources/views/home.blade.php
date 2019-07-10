@@ -9,15 +9,16 @@
         <div class="col-9 pt-5">
             <div>
                 <h1>{{ $user->username}}</h1>
+                <a href="#" class="d-flex justify-content-between align-items-baseline">Add New Post</a>
             </div>
             <div class="d-flex">
                 <div class="pr-5"><strong>153</strong> posts</div>
                 <div class="pr-5"><strong>23k</strong> followers</div>
                 <div class="pr-5"><strong>212</strong> following</div>
             </div>
-            <div class="pt-4 font-weight-bold">Cats of instagram</div>
-            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis necessitatibus culpa, praesentium pariatur quidem architecto est veritatis? Molestias itaque ea iste consectetur quasi nesciunt et perferendis dignissimos. Doloremque, laudantium incidunt?</div>
-            <div><a href="#">www.catsofinsta.org</a></div>
+            <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
+            <div>{{$user->profile->description}}</div>
+            <div><a href="#">{{$user->profile->url}}</a></div>
         </div>
     </div>
 
