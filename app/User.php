@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -36,6 +37,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function($user) {
+            $user->profile()->create([
+                'title' => $user->username,
+            ]);
+        });
+    }
 
     public function posts(){
         return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
